@@ -46,26 +46,47 @@ async function getSelectedText() {
 
 async function callAIAPI(selectedText) {
   try {
-    const response = await fetch(BASE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${API_KEY}`,
-      },
-      body: JSON.stringify({
-        messages: [
-          { role: "system", content: "You are a helpful assistant." },
-          { role: "user", content: selectedText },
-        ],
-        model: "deepseek-chat",
-      }),
-    });
+    const response = await fetch(
+      "https://api.deepseek.com/v1/chat/completions",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer sk-c6387f8ffb7b4c8980b318c83b6f73e5",
+        },
+        body: JSON.stringify({
+          model: "deepseek-chat",
+          messages: [
+            {
+              role: "system",
+              content:
+                "You are a helpful assistant that translates text to Vietnamese.",
+            },
+            {
+              role: "user",
+              content: `Translate this text to Vietnamese: ${selectedText}`,
+            },
+          ],
+          stream: false,
+        }),
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
 
     const data = await response.json();
-    console.log(data);
-    return data.choices[0].message.content;
+    console.log("API Response:", data); // For debugging
+
+    if (data.choices && data.choices[0] && data.choices[0].message) {
+      return data.choices[0].message.content;
+    } else {
+      throw new Error("Invalid response format");
+    }
   } catch (error) {
     console.error("Error calling DeepSeek API:", error);
+    alert(`API Error: ${error.message}`);
     return null;
   }
 }
