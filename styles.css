@@ -1,6 +1,4 @@
-/* Add this CSS to the <style> section in popup.html */
-
-/* Reset and base styles */
+/* Modern reset and base styles */
 * {
   margin: 0;
   padding: 0;
@@ -8,52 +6,94 @@
 }
 
 body {
-  width: 350px;
-  padding: 20px;
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-  background: #f8f9fa;
+  width: 380px;
+  min-height: 450px;
+  padding: 24px;
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
   color: #2d3436;
 }
 
-/* Header styles */
+/* Enhanced header styles */
 h1 {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #536af5;
+  font-size: 28px;
+  margin-bottom: 24px;
+  background: linear-gradient(45deg, #536af5, #8b9eff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
   text-align: center;
-  font-weight: 600;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #e9ecef;
+  font-weight: 700;
+  padding-bottom: 12px;
+  border-bottom: 2px solid rgba(83, 106, 245, 0.1);
+  position: relative;
 }
 
-/* Button container */
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(90deg, #536af5, #8b9eff);
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+h1:hover::after {
+  width: 100%;
+}
+
+/* Improved button container */
 .button-container {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
+  padding: 8px 0;
 }
 
-/* Button styles */
+/* Enhanced button styles */
 button {
   width: 100%;
-  padding: 12px 16px;
+  padding: 14px 20px;
   border: none;
-  border-radius: 8px;
-  background: #ffffff;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.8);
   color: #536af5;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 15px;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 4px rgba(83, 106, 245, 0.1);
-  border: 1px solid rgba(83, 106, 245, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px rgba(83, 106, 245, 0.1);
+  border: 1px solid rgba(83, 106, 245, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(83, 106, 245, 0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
 }
 
 button:hover {
   background: #536af5;
   color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(83, 106, 245, 0.2);
+  box-shadow: 0 6px 12px rgba(83, 106, 245, 0.2);
+}
+
+button:hover::before {
+  width: 300px;
+  height: 300px;
 }
 
 button:active {
@@ -61,30 +101,35 @@ button:active {
   box-shadow: 0 2px 4px rgba(83, 106, 245, 0.1);
 }
 
-/* Result container styles */
+/* Improved result container */
 #result {
-  margin-top: 20px;
-  padding: 16px;
-  border-radius: 8px;
-  background: #ffffff;
-  border: 1px solid #e9ecef;
-  min-height: 60px;
-  max-height: 200px;
+  margin-top: 24px;
+  padding: 20px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(83, 106, 245, 0.1);
+  min-height: 80px;
+  max-height: 250px;
   overflow-y: auto;
   font-size: 14px;
-  line-height: 1.5;
-  color: #495057;
-  transition: all 0.3s ease;
+  line-height: 1.6;
+  color: #2d3436;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  transform: translateY(10px);
 }
 
 #result:not(:empty) {
-  box-shadow: 0 2px 8px rgba(83, 106, 245, 0.1);
+  opacity: 1;
+  transform: translateY(0);
+  box-shadow: 0 4px 15px rgba(83, 106, 245, 0.1);
 }
 
-/* Loading animation */
+/* Enhanced loading animation */
 .loading {
   position: relative;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 .loading::after {
@@ -92,13 +137,13 @@ button:active {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 20px;
-  height: 20px;
-  margin: -10px 0 0 -10px;
-  border: 3px solid #536af5;
+  width: 24px;
+  height: 24px;
+  margin: -12px 0 0 -12px;
+  border: 3px solid rgba(83, 106, 245, 0.3);
   border-radius: 50%;
-  border-top-color: transparent;
-  animation: spin 0.8s linear infinite;
+  border-top-color: #536af5;
+  animation: spin 0.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 @keyframes spin {
@@ -107,40 +152,66 @@ button:active {
   }
 }
 
-/* Scrollbar styling */
+/* Modern scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f3f5;
-  border-radius: 4px;
+  background: rgba(241, 243, 245, 0.6);
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #536af5;
-  border-radius: 4px;
+  background: linear-gradient(45deg, #536af5, #8b9eff);
+  border-radius: 3px;
+  transition: background 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #4150c5;
+  background: linear-gradient(45deg, #4150c5, #536af5);
 }
 
-/* Error state */
+/* Error state with animation */
 .error {
   color: #dc3545;
-  background: #fff5f5;
+  background: rgba(255, 245, 245, 0.9);
   border-color: #dc3545;
+  animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
 }
 
+@keyframes shake {
+  10%, 90% {
+    transform: translateX(-1px);
+  }
+  20%, 80% {
+    transform: translateX(2px);
+  }
+  30%, 50%, 70% {
+    transform: translateX(-4px);
+  }
+  40%, 60% {
+    transform: translateX(4px);
+  }
+}
+
+/* Improved popup result */
 .popup-result {
   position: absolute;
-  background: white;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 10px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(83, 106, 245, 0.2);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 8px 30px rgba(83, 106, 245, 0.15);
   z-index: 1000;
-  max-width: 300px;
-  display: none;
+  max-width: 350px;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+}
+
+.popup-result.show {
+  opacity: 1;
+  transform: scale(1);
 }

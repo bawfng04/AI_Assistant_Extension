@@ -3,7 +3,13 @@
   "name": "DeepSeek Assistant",
   "version": "1.0",
   "description": "A browser extension to call DeepSeek API",
-  "permissions": ["activeTab", "https://api.deepseek.com/"],
+  "permissions": ["activeTab", "https://api.deepseek.com/", "<all_urls>"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["popup.js"]
+    }
+  ],
   "background": {
     "scripts": ["popup.js"],
     "persistent": false
