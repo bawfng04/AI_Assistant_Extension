@@ -2,6 +2,8 @@
 
 A browser extension that provides easy access to DeepSeek's AI capabilities through their API.
 
+![screenshot](icons/screenshot01.png)
+
 ## Features
 
 - Integration with DeepSeek API
