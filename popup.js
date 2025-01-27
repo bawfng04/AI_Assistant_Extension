@@ -16,13 +16,14 @@ document.addEventListener("DOMContentLoaded", function () {
       if (selectedText) {
         const response = await handler(selectedText);
         if (response) {
-          document.getElementById("result").innerText = response;
+          showResult(response);
         } else {
-          document.getElementById("result").innerText = "No response from API";
+          showResult("Error calling DeepSeek API");
         }
       } else {
         console.log("No text selected");
         alert("No text selected");
+        showResult("No text selected");
       }
     });
   });
@@ -96,10 +97,37 @@ async function callDeepSeekAPI(systemContent, userContent) {
   } catch (error) {
     console.error("Error calling DeepSeek API:", error);
     alert(error.message);
+    showResult("Error calling DeepSeek API: ", error.message);
     return null;
   }
 }
 
+// hiển thị kết quả vào result popup
+function showResult(text) {
+  const resultDiv = document.getElementById("result");
+  resultDiv.style.display = "block";
+  resultDiv.textContent = text;
+
+  // Adjust the position to ensure the popup is within the visible area
+  const rect = resultDiv.getBoundingClientRect();
+  const offset = 10; // Offset from the selected text
+
+  let top = window.scrollY + rect.top - resultDiv.offsetHeight - offset;
+  let left = window.scrollX + rect.left;
+
+  // Ensure the popup is within the viewport
+  if (top < 0) {
+    top = window.scrollY + rect.bottom + offset;
+  }
+  if (left + resultDiv.offsetWidth > window.innerWidth) {
+    left = window.innerWidth - resultDiv.offsetWidth - offset;
+  }
+
+  resultDiv.style.top = `${top}px`;
+  resultDiv.style.left = `${left}px`;
+}
+
+// Các prompts
 async function call_translate_to_Vietnamese(selectedText) {
   const systemContent =
     "You are a helpful assistant that translates text to Vietnamese. The user will provide you with text in English, and you should respond with the Vietnamese translation.";

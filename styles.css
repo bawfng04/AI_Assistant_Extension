@@ -1,0 +1,146 @@
+/* Add this CSS to the <style> section in popup.html */
+
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 350px;
+  padding: 20px;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: #f8f9fa;
+  color: #2d3436;
+}
+
+/* Header styles */
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #536af5;
+  text-align: center;
+  font-weight: 600;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e9ecef;
+}
+
+/* Button container */
+.button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Button styles */
+button {
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #536af5;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(83, 106, 245, 0.1);
+  border: 1px solid rgba(83, 106, 245, 0.2);
+}
+
+button:hover {
+  background: #536af5;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(83, 106, 245, 0.2);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(83, 106, 245, 0.1);
+}
+
+/* Result container styles */
+#result {
+  margin-top: 20px;
+  padding: 16px;
+  border-radius: 8px;
+  background: #ffffff;
+  border: 1px solid #e9ecef;
+  min-height: 60px;
+  max-height: 200px;
+  overflow-y: auto;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #495057;
+  transition: all 0.3s ease;
+}
+
+#result:not(:empty) {
+  box-shadow: 0 2px 8px rgba(83, 106, 245, 0.1);
+}
+
+/* Loading animation */
+.loading {
+  position: relative;
+  opacity: 0.7;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 3px solid #536af5;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f3f5;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #536af5;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4150c5;
+}
+
+/* Error state */
+.error {
+  color: #dc3545;
+  background: #fff5f5;
+  border-color: #dc3545;
+}
+
+.popup-result {
+  position: absolute;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index: 1000;
+  max-width: 300px;
+  display: none;
+}

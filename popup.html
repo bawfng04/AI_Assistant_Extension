@@ -4,23 +4,18 @@
   <meta charset="UTF-8">
   <title>AI Assistant</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    button { margin: 5px; padding: 10px; }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
-<!-- <body>
-  <button id="translate-btn">Translate to Vietnamese</button>
-  <button id="rewrite-btn">Rewrite selected text</button>
-  <script src="popup.js"></script>
-</body> -->
 <body>
   <h1>DeepSeek Assistant</h1>
-  <button id="TranslateTextButton">Translate to Vietnamese</button>
-  <button id="TranslateTextButton2">Translate to English</button>
-  <button id="RewriteTextButton">Rewrite selected text</button>
-  <button id="SummarizeTextButton">Summarize selected text</button>
-  <button id="AnswerQuestionButton">Answer question</button>
-  <div id="result">result div</div>
+  <div class="button-container">
+    <button id="TranslateTextButton">Translate to Vietnamese</button>
+    <button id="TranslateToEnglishButton">Translate to English</button>
+    <button id="RewriteTextButton">Rewrite Text</button>
+    <button id="SummarizeTextButton">Summarize Text</button>
+    <button id="AnswerQuestionButton">Answer Question</button>
+  </div>
+  <div id="result" class="popup-result">RESULT</div>
   <script src="popup.js"></script>
 </body>
 </html>
