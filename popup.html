@@ -7,15 +7,18 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>DeepSeek Assistant</h1>
-  <div class="button-container">
-    <button id="TranslateTextButton">Translate to Vietnamese</button>
-    <button id="TranslateToEnglishButton">Translate to English</button>
-    <button id="RewriteTextButton">Rewrite Text</button>
-    <button id="SummarizeTextButton">Summarize Text</button>
-    <button id="AnswerQuestionButton">Answer Question</button>
+  <div class="main-container">
+    <h1>Assistant</h1>
+    <div class="button-container">
+      <button id="TranslateTextButton">🔄 Vietnamese</button>
+      <button id="TranslateToEnglishButton">🔄 English</button>
+      <button id="RewriteTextButton">Rewrite Text</button>
+      <button id="SummarizeTextButton">Summarize Text</button>
+      <button id="AnswerQuestionButton">Answer Question</button>
+    </div>
+
+    <script src="popup.js"></script>
   </div>
   <div id="result" class="popup-result"></div>
-  <script src="popup.js"></script>
 </body>
 </html>
