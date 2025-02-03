@@ -1,0 +1,81 @@
+.translate-button {
+  position: absolute;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 999999;
+  padding: 5px;
+}
+
+.gemini-translate-btn {
+  background: #4285f4;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.gemini-translate-btn:hover {
+  background: #357abd;
+}
+
+.translation-result {
+  margin-top: 5px;
+  padding: 8px;
+  max-width: 300px;
+  word-wrap: break-word;
+}
+
+.translation-text {
+  color: #333;
+}
+
+.error {
+  color: #d93025;
+  font-size: 12px;
+}
+
+.settings-container {
+  padding: 15px;
+  min-width: 350px;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#save {
+  background: #34a853;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.status-success {
+  color: #34a853;
+  margin-top: 10px;
+}
+
+.status-error {
+  color: #d93025;
+  margin-top: 10px;
+}
